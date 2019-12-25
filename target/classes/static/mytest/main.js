@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDom from "react-dom";
 import Header from './components/Header.js';
 import {render} from 'react-dom';
 
