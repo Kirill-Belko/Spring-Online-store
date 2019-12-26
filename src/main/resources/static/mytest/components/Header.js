@@ -8,6 +8,15 @@ import ReactDom from "react-dom";
 class Header extends React.Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            goodsActivate: false
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        this.setState({goodsActivate: true})
     }
 
     render(){
@@ -16,19 +25,22 @@ class Header extends React.Component {
                 <h1>Выберите категорию товаров</h1>
                 <div className="row">
                     <div className="col-sm">
-                        Телефоны
+                        <button onClick={() => {
+                            this.setState({goodsActivate: true});
+                            this.props.updateGoodsActivateState(true)
+                            }}>Телефоны</button>
                     </div>
                     <div className="col-sm">
-                        Телевизоры
+                        <a>Телевизоры</a>
                     </div>
                     <div className="col-sm">
-                        Компьютеры
+                        <a>Компьютеры</a>
                     </div>
                     <div className="col-sm">
-                        Техника для кухни
+                        <a>Техника для кухни</a>
                     </div>
                     <div className="col-sm">
-                        Техника для дома
+                        <a>Техника для дома</a>
                     </div>
                 </div>
             </div>

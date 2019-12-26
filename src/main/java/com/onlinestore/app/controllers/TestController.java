@@ -12,4 +12,9 @@ public class TestController {
     public String getMainpage(){
         return "/test/main";
     }
+
+    @GetMapping("/phones")
+    public String getPhonespage(){
+        return "/test/phones";
+    }
 }

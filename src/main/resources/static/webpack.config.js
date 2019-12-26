@@ -27,6 +27,7 @@ module.exports = {
         ]
     },
     devServer: {
+        port: 9091,
         noInfo: false,
         quiet: false,
         lazy: false,
