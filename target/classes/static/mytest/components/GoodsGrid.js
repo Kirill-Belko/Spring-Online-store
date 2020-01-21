@@ -7,22 +7,20 @@ class GoodsGrid extends React.Component {
     }
 
     render() {
+
         return (
             <div id="goods_grid" className="container">
-                <div className="row">
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                </div>
-                <div className="row">
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                    <div className="col"><div className="inside_col"></div></div>
-                </div>
+                {this.props.goods.map((item, index) => {
+
+                            return (
+                                <div className="row">
+                                    <div className="col"><div className="inside_col">{item[0] !== undefined? item[0].name : ""}</div></div>
+                                    <div className="col"><div className="inside_col">{item[1] !== undefined? item[1].name : ""}</div></div>
+                                    <div className="col"><div className="inside_col">{item[2] !== undefined? item[2].name : ""}</div></div>
+                                </div>
+                            );
+                 })
+                }
             </div>
         );
     }

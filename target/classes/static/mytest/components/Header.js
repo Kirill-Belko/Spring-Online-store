@@ -12,12 +12,24 @@ class Header extends React.Component {
         this.state = {
             goodsActivate: false
         };
-        this.handleClick = this.handleClick.bind(this);
+        //this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
-        this.setState({goodsActivate: true})
-    }
+    // handleClick(){
+    //     this.setState({goodsActivate: true})
+    // }
+
+    handleGoodsButtonClick = (category) => {
+        fetch("/test/getProductsByCategory?category=" + category)
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({goodsActivate: true});
+                let arr2D = [];
+                while(data.length) arr2D.push(data.splice(0, 3));
+                this.setState({goods: arr2D});
+                this.props.updateGoodsActivateState(true, arr2D);
+            });
+    };
 
     render(){
         return (
@@ -26,21 +38,28 @@ class Header extends React.Component {
                 <div className="row">
                     <div className="col-sm">
                         <button onClick={() => {
-                            this.setState({goodsActivate: true});
-                            this.props.updateGoodsActivateState(true)
+                            this.handleGoodsButtonClick(1)
                             }}>Телефоны</button>
                     </div>
                     <div className="col-sm">
-                        <a>Телевизоры</a>
+                        <button onClick={() => {
+                            this.handleGoodsButtonClick(2)
+                        }}>Телевизоры</button>
                     </div>
                     <div className="col-sm">
-                        <a>Компьютеры</a>
+                        <button onClick={() => {
+                            this.handleGoodsButtonClick(3)
+                        }}>Компьютеры</button>
                     </div>
                     <div className="col-sm">
-                        <a>Техника для кухни</a>
+                        <button onClick={() => {
+                            this.handleGoodsButtonClick(4)
+                        }}>Техника для кухни</button>
                     </div>
                     <div className="col-sm">
-                        <a>Техника для дома</a>
+                        <button onClick={() => {
+                            this.handleGoodsButtonClick(5)
+                        }}>Техника для дома</button>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/test")
@@ -25,26 +29,27 @@ public class TestController {
     @GetMapping("/main")
     public String getMainpage(){
 
-        Category category = new Category();
-        //category.setId(1);
-        Producer producer = new Producer();
-        //producer.setId(1);
-
-        Product product = new Product();
-        //product.setId(1);
-        product.setCategory(category);
-        product.setProducer(producer);
-        categoryRepository.save(category);
-        producerRepository.save(producer);
-        product.setCategory(category);
-        product.setProducer(producer);
-        productRepository.save(product);
+//        Category category = new Category();
+//        //category.setId(1);
+//        Producer producer = new Producer();
+//        //producer.setId(1);
+//
+//        Product product = new Product();
+//        //product.setId(1);
+//        product.setCategory(category);
+//        product.setProducer(producer);
+//        categoryRepository.save(category);
+//        producerRepository.save(producer);
+//        product.setCategory(category);
+//        product.setProducer(producer);
+//        productRepository.save(product);
 
         return "/test/main";
     }
 
-    @GetMapping("/phones")
-    public String getPhonespage(){
-        return "/test/phones";
+    @GetMapping("/getProductsByCategory")
+    @ResponseBody
+    public List<Product> getProductsByCategory(@RequestParam() Integer category){
+        return productRepository.getProductsByCategory(category);
     }
 }

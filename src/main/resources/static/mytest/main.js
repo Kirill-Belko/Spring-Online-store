@@ -10,17 +10,19 @@ class Main extends React.Component {
     }
 
     state = {
-        goodsActivate: ""
+        goodsActivate: "",
+        goods: []
     };
 
-    updateGoodsActivateState = (value) => {
+    updateGoodsActivateState = (value, arr) => {
         this.setState({goodsActivate: value});
-    }
+        this.setState({goods: arr});
+    };
 
     render(){
         let goods_grid = "";
         if(this.state.goodsActivate === true){
-            goods_grid = <GoodsGrid/>;
+            goods_grid = <GoodsGrid goods = {this.state.goods}/>;
         }
         return(
             <div>
